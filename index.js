@@ -17,7 +17,7 @@ var crypto = require('crypto');
 exports.sign = function(val, secret){
   if ('string' != typeof val) throw new TypeError('cookie required');
   if ('string' != typeof secret) throw new TypeError('secret required');
-  return val + '.' + crypto
+  return val + '--' + crypto
     .createHmac('sha256', secret)
     .update(val)
     .digest('base64')
